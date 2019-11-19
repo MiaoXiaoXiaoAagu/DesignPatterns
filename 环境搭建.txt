@@ -1,0 +1,5 @@
+npm init 
+一路回车，新建好package.json
+npm install webpack webpack-cli --save-dev
+npm install webpack-dev-server html-webpack-plugin --save-dev
+npm install babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-latest --save-dev
