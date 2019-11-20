@@ -4,7 +4,7 @@ js学习设计模式记录
 将src/patterns中的.js文件粘贴到src/index.js  命令行运行：npm run dev即可运行代码。一旦运行之后，每次修改、保存index.js会自动重新编译。
 ## 博客地址
 [js设计模式-单例模式（1）](https://www.jianshu.com/p/7bab4ba6c9af)
-## js设计模式-单例模式（1）
+## 单例模式
 **目的：** 让项目中仅存在一个SingleObj的实例，多次声明实例获取到的都是同一个实例，不会进行多次new。  
 **实现思路：** SingleObj.getInstance()代替new SingleObj()来获取实例，以控制SingleObj仅有一个实例。
 SingleObj.getInstance()的返回值每次都是同一个实例，所以SingleObj.getInstance()中储存着一个SingleObj的实例。所以利用闭包储存一个SingleObj实例
@@ -40,4 +40,26 @@ SingleObj.getInstance=(function(){
 const ins1=SingleObj.getInstance()
 const ins2=SingleObj.getInstance()
 console.log(ins1===ins2)//true
+```
+## 适配器模式
+**使用场景：**
+旧接口与使用者不兼容，中间添加一个转换接口。
+当他人已完成的代码在格式上不满足新需求时，用适配器模式改变。
+```js
+class Adoptee{
+    specificRequest(){
+        return "德国插座"
+    }
+}
+class Adapter {
+    constructor(adoptee){
+        this.adoptee=adoptee
+    }
+    request(){
+        let info=this.adoptee.specificRequest()
+        return `${info}-转换-中国插座`
+    }
+}
+console.log(new Adapter(new Adoptee()).request())//德国插座-转换-中国插座
+
 ```
